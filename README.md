@@ -1,4 +1,8 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/vcdkhya4u6h26qr2/branch/master?svg=true)](https://ci.appveyor.com/project/fragmer/fnbt/branch/master)
+## Forked version
+
+This is a forked version of fNBT, which implements the support for TAG_LongArray
+
+
 
 [Named Binary Tag (NBT)](https://minecraft.gamepedia.com/NBT_format) is a structured binary file format used by Minecraft.
 fNbt is a small library, written in C# for .NET 3.5+. It provides functionality

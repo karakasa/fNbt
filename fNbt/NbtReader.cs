@@ -105,7 +105,7 @@ namespace fNbt {
             get { return (TagType == NbtTagType.List); }
         }
 
-        /// <summary> Whether the current tag has length (Lists, ByteArrays, and IntArrays have length).
+        /// <summary> Whether the current tag has length (Lists, ByteArrays, IntArrays and LongArrays have length).
         /// Compound tags also have length, technically, but it is not known until all child tags are read. </summary>
         public bool HasLength {
             get {
@@ -113,6 +113,7 @@ namespace fNbt {
                     case NbtTagType.List:
                     case NbtTagType.ByteArray:
                     case NbtTagType.IntArray:
+                    case NbtTagType.LongArray:
                         return true;
                     default:
                         return false;
@@ -299,6 +300,7 @@ namespace fNbt {
 
                 case NbtTagType.IntArray:
                 case NbtTagType.ByteArray:
+                case NbtTagType.LongArray:
                     TagLength = reader.ReadInt32();
                     atValue = true;
                     break;
@@ -389,6 +391,10 @@ namespace fNbt {
 
                 case NbtTagType.IntArray:
                     reader.Skip(sizeof(int)*TagLength);
+                    break;
+
+                case NbtTagType.LongArray:
+                    reader.Skip(sizeof(long)*TagLength);
                     break;
 
                 case NbtTagType.String:
@@ -634,6 +640,13 @@ namespace fNbt {
                     }
                     return new NbtIntArray(TagName, ints);
 
+                case NbtTagType.LongArray:
+                    var longs = new long[TagLength];
+                    for (int i = 0; i < TagLength; i++) {
+                        longs[i] = reader.ReadInt64();
+                    }
+                    return new NbtLongArray(TagName, longs);
+
                 default:
                     throw new InvalidOperationException(NonValueTagError);
             }
@@ -719,6 +732,14 @@ namespace fNbt {
                         intValue[i] = reader.ReadInt32();
                     }
                     value = intValue;
+                    break;
+
+                case NbtTagType.LongArray:
+                    var longValue = new long[TagLength];
+                    for (int i = 0; i < TagLength; i++) {
+                        longValue[i] = reader.ReadInt64();
+                    }
+                    value = longValue;
                     break;
 
                 case NbtTagType.String:
@@ -888,7 +909,7 @@ namespace fNbt {
             }
             sb.Append(' ').Append(TagName);
             if (includeValue && (atValue || HasValue && cacheTagValues) && TagType != NbtTagType.IntArray &&
-                TagType != NbtTagType.ByteArray) {
+                TagType != NbtTagType.ByteArray && TagType != NbtTagType.LongArray) {
                 sb.Append(" = ").Append(ReadValue());
             }
             return sb.ToString();

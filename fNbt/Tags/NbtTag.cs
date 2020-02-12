@@ -106,7 +106,7 @@ namespace fNbt {
         /// <exception cref="ArgumentNullException"> Given tag is <c>null</c>. </exception>
         /// <exception cref="ArgumentException"> Given tag's type does not match ListType. </exception>
         /// <exception cref="InvalidOperationException"> If used on a tag that is not NbtList, NbtByteArray, or NbtIntArray. </exception>
-        /// <remarks> ONLY APPLICABLE TO NbtList, NbtByteArray, and NbtIntArray OBJECTS!
+        /// <remarks> ONLY APPLICABLE TO NbtList, NbtByteArray, NbtIntArray and NbtLongArray OBJECTS!
         /// Included in NbtTag base class for programmers' convenience, to avoid extra type casts. </remarks>
         public virtual NbtTag this[int tagIndex] {
             get { throw new InvalidOperationException("Integer indexers only work on NbtList tags."); }
@@ -254,9 +254,27 @@ namespace fNbt {
             }
         }
 
+        /// <summary> Returns the value of this tag, cast as an long array.
+        /// Only supported by NbtLongArray tags. </summary>
+        /// <exception cref="InvalidCastException"> When used on a tag other than NbtLongArray. </exception>
+        public long[] LongArrayValue
+        {
+            get
+            {
+                if (TagType == NbtTagType.LongArray)
+                {
+                    return ((NbtLongArray)this).Value;
+                }
+                else
+                {
+                    throw new InvalidCastException("Cannot get LongArrayValue from " + GetCanonicalTagName(TagType));
+                }
+            }
+        }
+
         /// <summary> Returns the value of this tag, cast as a string.
         /// Returns exact value for NbtString, and stringified (using InvariantCulture) value for NbtByte, NbtDouble, NbtFloat, NbtInt, NbtLong, and NbtShort.
-        /// Not supported by NbtCompound, NbtList, NbtByteArray, or NbtIntArray. </summary>
+        /// Not supported by NbtCompound, NbtList, NbtByteArray, NbtIntArray or NbtLongArray. </summary>
         /// <exception cref="InvalidCastException"> When used on an unsupported tag. </exception>
         public string StringValue {
             get {
@@ -308,6 +326,8 @@ namespace fNbt {
                     return "TAG_Int";
                 case NbtTagType.IntArray:
                     return "TAG_Int_Array";
+                case NbtTagType.LongArray:
+                    return "TAG_Long_Array";
                 case NbtTagType.List:
                     return "TAG_List";
                 case NbtTagType.Long:
