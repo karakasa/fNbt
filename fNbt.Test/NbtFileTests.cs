@@ -2,7 +2,7 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace fNbt.Test {
+namespace fNbt.UnitTest {
     [TestFixture]
     public class NbtFileTests {
         const string TestDirName = "NbtFileTests";

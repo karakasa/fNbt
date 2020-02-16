@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace fNbt.Test {
+namespace fNbt.UnitTest {
     internal class NonSeekableStream : Stream {
         readonly Stream stream;
 

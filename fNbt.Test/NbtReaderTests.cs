@@ -3,7 +3,7 @@ using System.CodeDom;
 using System.IO;
 using NUnit.Framework;
 
-namespace fNbt.Test {
+namespace fNbt.UnitTest {
     [TestFixture]
     public sealed class NbtReaderTests {
         [Test]

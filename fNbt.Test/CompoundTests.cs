@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
-namespace fNbt.Test {
+namespace fNbt.UnitTest {
     [TestFixture]
     public sealed class CompoundTests {
         [Test]

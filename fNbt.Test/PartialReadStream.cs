@@ -2,7 +2,7 @@
 using System.IO;
 using JetBrains.Annotations;
 
-namespace fNbt.Test {
+namespace fNbt.UnitTest {
     class PartialReadStream : Stream {
         readonly Stream baseStream;
         readonly int increment;

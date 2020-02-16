@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace fNbt.Test {
+namespace fNbt.UnitTest {
     [TestFixture]
     public sealed class TagSelectorTests {
         [Test]

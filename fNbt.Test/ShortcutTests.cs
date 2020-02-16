@@ -2,7 +2,7 @@
 using System.Globalization;
 using NUnit.Framework;
 
-namespace fNbt.Test {
+namespace fNbt.UnitTest {
     [TestFixture]
     public class ShortcutTests {
         [Test]

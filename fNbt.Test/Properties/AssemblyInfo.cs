@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("fNbt.Test")]
+[assembly: AssemblyTitle("fNbt.UnitTest")]
 [assembly: AssemblyDescription("NUnit tests for fNbt library.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("github.com/fragmer/fNbt")]
-[assembly: AssemblyProduct("fNbt.Test")]
+[assembly: AssemblyProduct("fNbt.UnitTest")]
 [assembly: AssemblyCopyright("2012-2018 Matvei Stefarov")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

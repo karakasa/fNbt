@@ -2,7 +2,7 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace fNbt.Test {
+namespace fNbt.UnitTest {
     public static class TestFiles {
         public const string DirName = "TestFiles";
         public static readonly string Small = Path.Combine(DirName, "test.nbt");
