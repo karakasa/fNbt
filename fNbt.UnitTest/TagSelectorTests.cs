@@ -5,6 +5,8 @@ namespace fNbt.UnitTest {
     public sealed class TagSelectorTests {
         [Test]
         public void SkippingTagsOnFileLoad() {
+            TestFiles.RelocateTestFiles();
+
             var loadedFile = new NbtFile();
             loadedFile.LoadFromFile("TestFiles/bigtest.nbt",
                                     NbtCompression.None,

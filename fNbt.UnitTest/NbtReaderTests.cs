@@ -8,6 +8,8 @@ namespace fNbt.UnitTest {
     public sealed class NbtReaderTests {
         [Test]
         public void PrintBigFileUncompressed() {
+            TestFiles.RelocateTestFiles();
+
             using (FileStream fs = File.OpenRead("TestFiles/bigtest.nbt")) {
                 var reader = new NbtReader(fs);
                 Assert.AreEqual(fs, reader.BaseStream);
@@ -22,6 +24,8 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void PrintBigFileUncompressedNoSkip() {
+            TestFiles.RelocateTestFiles();
+
             using (FileStream fs = File.OpenRead("TestFiles/bigtest.nbt")) {
                 var reader = new NbtReader(fs) {
                     SkipEndTags = false
@@ -551,6 +555,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void NonSeekableStreamSkip1() {
+            TestFiles.RelocateTestFiles();
             byte[] fileBytes = File.ReadAllBytes("TestFiles/bigtest.nbt");
             using (var ms = new MemoryStream(fileBytes)) {
                 using (var nss = new NonSeekableStream(ms)) {
@@ -655,6 +660,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void PartialReadTest() {
+            TestFiles.RelocateTestFiles();
             // read the whole thing as one tag, one byte at a time
             TestFiles.AssertValueTest(PartialReadTestInternal(new NbtFile(TestFiles.MakeValueTest())));
             TestFiles.AssertNbtSmallFile(PartialReadTestInternal(TestFiles.MakeSmallFile()));
@@ -664,6 +670,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void PartialBatchReadTest() {
+            TestFiles.RelocateTestFiles();
             // read the whole thing as one tag, in batches of 4 bytes
             // Verifies fix for https://github.com/fragmer/fNbt/issues/26
             TestFiles.AssertValueTest(PartialReadTestInternal(new NbtFile(TestFiles.MakeValueTest()), 4));

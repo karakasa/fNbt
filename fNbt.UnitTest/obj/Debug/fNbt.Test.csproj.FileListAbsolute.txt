@@ -1,0 +1,17 @@
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\NUnit3.TestAdapter.dll
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\NUnit3.TestAdapter.pdb
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\nunit.engine.dll
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\nunit.engine.api.dll
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\TestFiles\bigtest.nbt
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\TestFiles\bigtest.nbt.gz
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\TestFiles\bigtest.nbt.z
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\TestFiles\test.nbt
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\TestFiles\test.nbt.gz
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\TestFiles\test.nbt.z
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\fNbt.Test.dll
+C:\Users\ganke\Source\Repos\karakasa\fNbt\bin\Debug\fNbt.Test.pdb
+C:\Users\ganke\Source\Repos\karakasa\fNbt\fNbt.Test\obj\Debug\fNbt.Test.csprojAssemblyReference.cache
+C:\Users\ganke\Source\Repos\karakasa\fNbt\fNbt.Test\obj\Debug\fNbt.Test.csproj.CoreCompileInputs.cache
+C:\Users\ganke\Source\Repos\karakasa\fNbt\fNbt.Test\obj\Debug\fNbt.Test.csproj.CopyComplete
+C:\Users\ganke\Source\Repos\karakasa\fNbt\fNbt.Test\obj\Debug\fNbt.Test.dll
+C:\Users\ganke\Source\Repos\karakasa\fNbt\fNbt.Test\obj\Debug\fNbt.Test.pdb

@@ -12,6 +12,18 @@ namespace fNbt.UnitTest {
         public static readonly string BigGZip = Path.Combine(DirName, "bigtest.nbt.gz");
         public static readonly string BigZLib = Path.Combine(DirName, "bigtest.nbt.z");
 
+        public static bool FileRedirected = false;
+
+        // reset current directory so that it can be run under VS
+        // by: Keyu Gan
+        public static void RelocateTestFiles()
+        {
+            if (FileRedirected) return;
+            var path = Path.GetDirectoryName(Path.GetDirectoryName(TestContext.CurrentContext.TestDirectory));
+            path = Path.Combine(path, "fNbt.UnitTest");
+            Directory.SetCurrentDirectory(path);
+            FileRedirected = true;
+        }
 
         // creates a compound containing lists of every kind of tag
         public static NbtCompound MakeListTest() {

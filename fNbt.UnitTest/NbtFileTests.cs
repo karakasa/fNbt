@@ -18,6 +18,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void TestNbtSmallFileLoadingUncompressed() {
+            TestFiles.RelocateTestFiles();
             var file = new NbtFile(TestFiles.Small);
             Assert.AreEqual(TestFiles.Small, file.FileName);
             Assert.AreEqual(NbtCompression.None, file.FileCompression);
@@ -27,6 +28,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void LoadingSmallFileGZip() {
+            TestFiles.RelocateTestFiles();
             var file = new NbtFile(TestFiles.SmallGZip);
             Assert.AreEqual(TestFiles.SmallGZip, file.FileName);
             Assert.AreEqual(NbtCompression.GZip, file.FileCompression);
@@ -36,6 +38,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void LoadingSmallFileZLib() {
+            TestFiles.RelocateTestFiles();
             var file = new NbtFile(TestFiles.SmallZLib);
             Assert.AreEqual(TestFiles.SmallZLib, file.FileName);
             Assert.AreEqual(NbtCompression.ZLib, file.FileCompression);
@@ -49,6 +52,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void LoadingBigFileUncompressed() {
+            TestFiles.RelocateTestFiles();
             var file = new NbtFile();
             long length = file.LoadFromFile(TestFiles.Big);
             TestFiles.AssertNbtBigFile(file);
@@ -58,6 +62,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void LoadingBigFileGZip() {
+            TestFiles.RelocateTestFiles();
             var file = new NbtFile();
             long length = file.LoadFromFile(TestFiles.BigGZip);
             TestFiles.AssertNbtBigFile(file);
@@ -67,6 +72,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void LoadingBigFileZLib() {
+            TestFiles.RelocateTestFiles();
             var file = new NbtFile();
             long length = file.LoadFromFile(TestFiles.BigZLib);
             TestFiles.AssertNbtBigFile(file);
@@ -76,6 +82,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void LoadingBigFileBuffer() {
+            TestFiles.RelocateTestFiles();
             byte[] fileBytes = File.ReadAllBytes(TestFiles.Big);
             var file = new NbtFile();
 
@@ -90,6 +97,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void LoadingBigFileStream() {
+            TestFiles.RelocateTestFiles();
             byte[] fileBytes = File.ReadAllBytes(TestFiles.Big);
             using (var ms = new MemoryStream(fileBytes)) {
                 using (var nss = new NonSeekableStream(ms)) {
@@ -106,6 +114,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void TestNbtSmallFileSavingUncompressed() {
+            TestFiles.RelocateTestFiles();
             NbtFile file = TestFiles.MakeSmallFile();
             string testFileName = Path.Combine(TestDirName, "test.nbt");
             file.SaveToFile(testFileName, NbtCompression.None);
@@ -115,6 +124,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void TestNbtSmallFileSavingUncompressedStream() {
+            TestFiles.RelocateTestFiles();
             NbtFile file = TestFiles.MakeSmallFile();
             var nbtStream = new MemoryStream();
             Assert.Throws<ArgumentNullException>(() => file.SaveToStream(null, NbtCompression.None));
@@ -128,6 +138,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void ReloadFile() {
+            TestFiles.RelocateTestFiles();
             ReloadFileInternal("bigtest.nbt", NbtCompression.None, true, true);
             ReloadFileInternal("bigtest.nbt.gz", NbtCompression.GZip, true, true);
             ReloadFileInternal("bigtest.nbt.z", NbtCompression.ZLib, true, true);
@@ -139,6 +150,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void ReloadFileUnbuffered() {
+            TestFiles.RelocateTestFiles();
             ReloadFileInternal("bigtest.nbt", NbtCompression.None, true, false);
             ReloadFileInternal("bigtest.nbt.gz", NbtCompression.GZip, true, false);
             ReloadFileInternal("bigtest.nbt.z", NbtCompression.ZLib, true, false);
@@ -165,6 +177,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void ReloadNonSeekableStream() {
+            TestFiles.RelocateTestFiles();
             var loadedFile = new NbtFile(TestFiles.Big);
             using (var ms = new MemoryStream()) {
                 using (var nss = new NonSeekableStream(ms)) {
@@ -184,6 +197,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void LoadFromStream() {
+            TestFiles.RelocateTestFiles();
             LoadFromStreamInternal(TestFiles.Big, NbtCompression.None);
             LoadFromStreamInternal(TestFiles.BigGZip, NbtCompression.GZip);
             LoadFromStreamInternal(TestFiles.BigZLib, NbtCompression.ZLib);
@@ -213,6 +227,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void PrettyPrint() {
+            TestFiles.RelocateTestFiles();
             var loadedFile = new NbtFile(TestFiles.Big);
             Assert.AreEqual(loadedFile.RootTag.ToString(), loadedFile.ToString());
             Assert.AreEqual(loadedFile.RootTag.ToString("   "), loadedFile.ToString("   "));
@@ -223,6 +238,7 @@ namespace fNbt.UnitTest {
 
         [Test]
         public void ReadRootTag() {
+            TestFiles.RelocateTestFiles();
             Assert.Throws<FileNotFoundException>(() => NbtFile.ReadRootTagName("NonExistentFile"));
 
             ReadRootTagInternal(TestFiles.Big, NbtCompression.None);
