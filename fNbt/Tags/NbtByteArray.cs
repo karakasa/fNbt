@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
 
@@ -142,6 +143,14 @@ namespace fNbt {
                 sb.AppendFormat("(\"{0}\")", Name);
             }
             sb.AppendFormat(": [{0} bytes]", bytes.Length);
+        }
+
+        public override bool IsSameContentWith(NbtTag other)
+        {
+            if (!(other is NbtByteArray tag)) return false;
+            if (tag.Value.Length != Value.Length) return false;
+
+            return Enumerable.SequenceEqual(tag.Value, Value);
         }
     }
 }

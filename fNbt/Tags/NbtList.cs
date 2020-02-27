@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
 
@@ -603,6 +604,15 @@ namespace fNbt {
                 }
             }
             sb.Append('}');
+        }
+
+        public override bool IsSameContentWith(NbtTag other)
+        {
+            if (!(other is NbtList tag)) return false;
+            if (tag.Count != Count) return false;
+            if (tag.ListType != ListType) return false;
+
+            return tag.Zip(this, (x, y) => x.IsSameContentWith(y)).All(e => e);
         }
     }
 }

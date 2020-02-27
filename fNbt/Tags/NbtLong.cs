@@ -98,5 +98,11 @@ namespace fNbt {
             sb.Append(": ");
             sb.Append(Value);
         }
+
+        public override bool IsSameContentWith(NbtTag other)
+        {
+            if (!(other is NbtLong tag)) return false;
+            return tag.Value == Value;
+        }
     }
 }

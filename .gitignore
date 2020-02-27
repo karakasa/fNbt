@@ -1,6 +1,7 @@
 _ReSharper.LibNbt
 fNbt/obj
-fNbt.Test/obj
+fNbt.UnitTest/obj
+fNbt.UnitTest/obj/*
 fNbt.Serialization/obj
 fNbt.Serialization.Test/obj
 bin/

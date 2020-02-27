@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
 
@@ -144,6 +145,14 @@ namespace fNbt {
                 sb.AppendFormat("(\"{0}\")", Name);
             }
             sb.AppendFormat(": [{0} longs]", longs.Length);
+        }
+
+        public override bool IsSameContentWith(NbtTag other)
+        {
+            if (!(other is NbtLongArray tag)) return false;
+            if (tag.Value.Length != Value.Length) return false;
+
+            return Enumerable.SequenceEqual(tag.Value, Value);
         }
     }
 }
